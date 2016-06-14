@@ -3,8 +3,22 @@
  */
 package com.linuxtek.kona.data.dao;
 
+import java.util.List;
+
+import com.linuxtek.kona.data.entity.KEntityObject;
+
 /**
  * Marker interface to designate a MyBatis Dao object
  */
-public interface KMyBatisDao {
+public interface KMyBatisDao<T extends KEntityObject, E> {
+	 
+    int deleteByPrimaryKey(Long id);
+   
+    int insert(T record);
+
+    List<T> selectByExample(E example);
+    
+    T selectByPrimaryKey(Long id);
+   
+    int updateByPrimaryKey(T record);
 }
