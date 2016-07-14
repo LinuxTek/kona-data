@@ -21,4 +21,12 @@ public interface KMyBatisDao<T extends KEntityObject, E> {
     T selectByPrimaryKey(Long id);
    
     int updateByPrimaryKey(T record);
+    
+    
+    // for records with BLOBs
+    List<T> selectByExampleWithBLOBs(E example);
+    
+    int updateByExampleWithBLOBs(T record, E example);
+    
+    int updateByPrimaryKeyWithBLOBs(T record);
 }
