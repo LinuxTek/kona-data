@@ -12,10 +12,12 @@ import com.linuxtek.kona.data.entity.KEntityObject;
  * Basic CRUD operations.
  */
 public interface KDataService<D extends KEntityObject> {
-
+	
     public D add(D data);
 
     public D update(D data);
+    
+    public D save(D data);
 
     public void remove(D data); 
 
