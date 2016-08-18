@@ -20,6 +20,27 @@ public class KMyBatisUtil {
 
     public final static String NULL_AS_STRING = "__NULL__";
     
+    public static class Criteria {
+    	public Map<String,Object> filter = null;
+    	
+    	public Criteria() {
+    		filter = new HashMap<String,Object>();
+    	}
+    	
+    	public Criteria and(String key, Object value) {
+    		filter.put(key,  value);
+    		return this;
+    	}
+    	
+    	public Map<String,Object> build() {
+    		return filter;
+    	}
+    }
+    
+    public static Criteria filter() {
+    	return new Criteria();
+    }
+    
     public static String getOrderByString(String[] sortOrder) {
         StringBuffer sb = new StringBuffer();
 
