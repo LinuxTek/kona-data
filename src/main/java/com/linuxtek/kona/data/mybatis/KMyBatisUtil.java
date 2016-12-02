@@ -189,6 +189,11 @@ public class KMyBatisUtil {
                 //FIXME: need to convert value, which should be an array,
                 // to values, val1 and val2
                 logger.debug("buildExample: between true  key: " + key);
+            } else if (key.startsWith("~")) {
+                key = key.substring(1);
+                String name = KStringUtil.camelCase(key, true);
+                methodName = "and" + name + "Like";
+                logger.debug("buildExample: LIKE true  key: " + key);
             } else if (key.startsWith("!|")) {
                 key = key.substring(2);
                 String name = KStringUtil.camelCase(key, true);
@@ -199,6 +204,11 @@ public class KMyBatisUtil {
                 String name = KStringUtil.camelCase(key, true);
                 methodName = "and" + name + "NotBetween";
                 logger.debug("buildExample: notBetween true  key: " + key);
+            } else if (key.startsWith("!~")) {
+                key = key.substring(2);
+                String name = KStringUtil.camelCase(key, true);
+                methodName = "and" + name + "NotLike";
+                logger.debug("buildExample: notLike true  key: " + key);
             } else if (key.startsWith("!")) {
                 key = key.substring(1);
                 String name = KStringUtil.camelCase(key, true);
