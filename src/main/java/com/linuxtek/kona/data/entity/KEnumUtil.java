@@ -32,15 +32,18 @@ public class KEnumUtil {
 	public static <T extends Enum<?> & KEnumObject> T getInstance(
 			Class<T> clazz, Long id) {
 
-		if (id == null)
+		if (id == null) {
 			return null;
+		}
 
 		T[] values = clazz.getEnumConstants();
+
 		for (T type : values) {
 			if (type.getId().equals(id)) {
 				return (type);
 			}
 		}
+
 		throw new IllegalArgumentException("ERROR: " + clazz.getName()
 				+ ": id not found: " + id);
 	}
@@ -52,11 +55,13 @@ public class KEnumUtil {
 			return null;
 
 		T[] values = clazz.getEnumConstants();
+
 		for (T type : values) {
 			if (type.name().equalsIgnoreCase(name.trim())) {
 				return (type);
 			}
 		}
+
 		throw new IllegalArgumentException("ERROR: " + clazz.getName()
 				+ ": name not found: " + name);
 	}
